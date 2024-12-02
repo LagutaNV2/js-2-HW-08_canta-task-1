@@ -34,8 +34,14 @@ export default class Team {
   // Метод для добавления нескольких персонажей
   addAll(...characters) {
     characters.forEach(character => {
-      if (!this.members.has(character)) {
-        this.members.add(character);
+      // if (!this.members.has(character)) {
+      //   this.members.add(character);
+      // }
+      // по замечанию аспиранта добавлен меиод с валидацией:
+      try {
+        this.add(character); // Используем метод add для добавления
+      } catch (error) {
+        // Игнорируем ошибки для addAll, так как дублирования допускаются
       }
     });
   }
